@@ -1,0 +1,58 @@
+Caso práctico
+Contexto o situación del problema:
+
+La empresa Smart-TEC, se orienta al desarrollo e implementación de nuevas tecnologías en diferentes áreas. 
+Como nuevo proyecto la empresa se ha propuesto el desarrollo de un prototipo de estacionamiento (parqueadero) inteligente 
+y la implementación de diferentes tecnologías web, móvil e Internet de las cosas (IoT).
+
+Requisitos funcionales para el software
+
+OK 1.    Desarrollar una aplicación web, utilizando un lenguaje (PHP o Python), que permita administrar varios parqueaderos de vehículos.
+ 
+2.    Desarrollar una aplicación móvil, utilizando el lenguaje de programación Android o Ionic para búsqueda y pago del servicio de estacionamiento.
+
+3.    Implementar la autorización y autentificación en las respectivas aplicaciones web y móvil. 
+      Un usuario administrador deberá tener acceso mediante la app web al control de los estacionamientos (añadir o dar de baja nuevo parqueo /piso /sección /plaza). 
+      Un usuario del servicio de parking deberá estar registrado para realizar pagos y ver un historial de servicios anteriores.
+
+4.    Paro el caso del registro de lecturas de sensores, utilizar una base de datos  NoSQL (Mongo DB, Casandra u otro) y para los datos que no son en tiempo real utilizar cualquier DBMS relacional.
+
+5.    Acceder a las bases de datos desde los clientes utilizando web services rest full.
+
+6.    Desarrollar un prototipo de estacionamiento inteligente (maqueta) mediante tecnologías de IoT con los dispositivos, sensores y actuadores que sean necesarios para cumplir los siguientes requisitos:
+
+6.1.  Un estacionamiento puede organizarse por plantas (pisos), secciones y plazas de aparcamiento.
+
+6.2.  Utilizar sensores de ocupación de plaza de aparcamiento (uno para cada plaza). 
+      Con este sensor determinar si una plaza está libre u ocupada, enviando al servidor información en tiempo real en el momento que ocurra el evento (ingreso/salida de un vehículo). 
+      Cada plaza tiene un semáforo con dos colores: rojo y verde, que indican ocupado y disponible respectivamente.  
+
+6.3.  En las aplicaciones web y móvil:
+
+6.3.1.    Visualizar un mapa de cada estacionamiento con los puestos libres y ocupados. Este mapa también debe estar en un monitor grande a la entrada de cada piso del parqueadero.
+
+6.3.2.    Buscar puestos de estacionamiento disponibles en cualquiera de los respectivos parqueos ingresando dirección o seleccionando el nombre del parqueadero.
+
+6.4.  En el momento en que un vehículo ingrese al parqueadero a ocupar una plaza, el usuario deberá tomar un ticket de una máquina que contiene un código QR con la información de código único, fecha y hora de inicio del servicio. Adicionalmente, una cámara deberá tomar una foto del vehículo con la placa y se registrará con los datos anteriores en un servidor.
+
+6.5.  Cuando el usuario quiera salir con su vehículo del parqueadero, deberá pagar por el servicio. Mediante la aplicación móvil de estacionamiento inteligente instalada en su celular e iniciada sesión, capturar mediante una foto el código QR del ticket de entrada, reconocer la fecha y hora de entrada para calcular la duración del servicio y el valor a pagar.
+
+6.6.  El usuario debe pagar electrónicamente el valor del servicio y en respuesta debe recibir su factura por email (con fecha, hora de inicio y fin del servicio de parking y el monto cancelado). Una vez cancelado el servicio del estacionamiento, el cliente tiene 5 minutos para salir, si no lo hace incurre en una multa que irá en aumento dependiendo del tiempo en que se demore y deberá cancelar nuevamente antes de salir.
+
+6.7.  El ticket de entrada sirve para salir del estacionamiento, siempre y cuando se haya realizado el pago correspondiente. En este caso se abrirá una compuerta para dejar salir al vehículo. Si el usuario entra y sale en 10 minutos, el servicio es gratuito y la compuerta de salida se abrirá sin problema. 
+
+7.    Implementar un Gateway para coordinar la comunicación entre los dispositivos y el servidor. Utilizar un protocolo de comunicación como MQTT, CoAPP u otro para interactuar los dispositivos con las aplicaciones. El medio de comunicación de los dispositivos con el servidor debe ser inalámbrica ((BLE, WIFI, Zigbee, LoRa, etc.).
+
+ 
+
+Requisitos no funcionales de desarrollo:
+
+1.    Elaborar un presupuesto del proyecto con todos los materiales empleados.
+
+2.    Diseñar el mapa de procesos y modelado de procesos del sistema según la metodología BPM.
+
+3.    Diseñar la arquitectura del sistema bien detallada con todos sus subsistemas, componentes y tecnologías.
+
+4.    Seguir una metodología de ingeniería de software para guiar el desarrollo del sistema.
+
+5.    Elaborar el informe según formato especificado en los reglamentos de titulación

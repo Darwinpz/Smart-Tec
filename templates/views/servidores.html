@@ -1,0 +1,132 @@
+<div class="tab-pane fade" id="v-pills-servidores" role="tabpanel" aria-labelledby="v-pills-servidores-tab">
+
+
+    <div class="row">
+
+        <div class="col">
+
+            <button type="button" class="btn btn-success btn-block" data-bs-toggle="modal"
+                data-bs-target="#servidorModal">
+                <i class="fas fa-user-plus"></i> Agregar Servidor
+            </button>
+
+            {% if ("Administrador" in session.rol or "Super-Admin" in session.rol)  %}
+            <a type="button" class="btn btn-primary btn-block" href="/rpt/servidores" target="_blank" ><i class="fas fa-print"></i> Reporte de Servidores</a></a>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <div class="row mt-3">
+
+        <div class="col">
+
+            {% include '/views/tables/table_servidores.html' %}
+
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="servidorModal" tabindex="-1" aria-labelledby="servidorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="servidorModalLabel"><b>Agregar Servidor</b></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="post" id="form_servidor" enctype="multipart/form-data">
+
+                    <div class="modal-body">
+
+                        <div class="modal-body row" style="align-items: center;">
+
+                            <div class="col col-lg-3 col-sm-12 mb-2">
+
+                                <div class="card" id="foto-servidor">
+
+                                    <div class="border border-dark d-flex justify-content-center" style="height:300px">
+
+                                        <img id="img_servidor" src="{{ url_for('static', filename= 'img/perfil.png') }}"
+                                            class="img-fluid">
+
+                                    </div>
+
+                                    <input type="file" accept="image/*" name="s_foto"
+                                        class="form-control border border-dark mt-2"
+                                        onchange="document.getElementById('img_servidor').src = window.URL.createObjectURL(this.files[0])">
+
+                                </div>
+
+                            </div>
+
+                            <div class="col col-lg-9">
+
+                                <div class="row g-3">
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12" id="s_div_buscar">
+                                        <label class="form-label fs-5"><b>* Buscador: <span
+                                                    id="mensaje_buscador"></span></b></label>
+                                        <input type="text" class="form-control fs-5 border border-dark" id="s_buscar"
+                                            name="s_buscar" placeholder="Cedula" maxlength="10" value="">
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-12 col-sm-12" style="display: none;">
+                                        <label class="form-label fs-5"><b>* Cédula:</b></label>
+                                        <input type="text" class="form-control fs-5 border border-dark" id="s_cedula"
+                                            name="s_cedula" placeholder="Cédula" readonly required>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-12 col-sm-12">
+                                        <label class="form-label fs-5"><b>* Ciudadano:</b></label>
+                                        <input type="text" class="form-control fs-5 border border-dark" id="s_ciudadano"
+                                            name="s_ciudadano" placeholder="Nombres Ciudadano" readonly required>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-12 col-sm-12">
+                                        <label class="form-label fs-5"><b>* Estado:</b></label>
+                                        <select class="form-select fs-5 border border-dark" id="s_cmb_estado"
+                                            name="s_estado" required>
+                                            <option disabled selected value="">Selecciona</option>
+                                            <option value="ACTIVO">ACTIVO</option>
+                                            <option value="INACTIVO">INACTIVO</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <label class="form-label fs-5"><b>* Correo:</b></label>
+                                        <input type="email" class="form-control fs-5 border border-dark" id="s_correo"
+                                            name="s_correo" placeholder="Correo" value="" required>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <span id="mensaje_servidor"></span>
+
+                        <button type="submit" class="btn btn-success" id="save-servidor"><i class="fas fa-save"></i>
+                            Guardar</button>
+
+                        <button type="submit" class="btn btn-primary" id="edit-servidor"><i class="fas fa-save"></i>
+                            Editar</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/servidores.js"></script>
+
+</div>
