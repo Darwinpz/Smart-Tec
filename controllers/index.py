@@ -1,12 +1,13 @@
-from flask import render_template, session, redirect, url_for
+from flask import render_template, session, redirect, url_for, request,jsonify
 from database.mongodb import MongoDb
 import controllers.ctl_history as hist
 from bson.objectid import ObjectId
 from controllers.validaciones import Validaciones as val
 import controllers.encrypt as encrypt
 import os
+import uuid
+#import qrcode
 db = MongoDb().db()
-
 
 
 def cerrar_sesion():
@@ -100,3 +101,41 @@ def principal():
         return render_template('/views/principal.html', session=session)
     else:
         return redirect(url_for('index'))
+
+
+#def ticket():
+    try:
+
+        if request.method == 'POST':
+            
+            foto = request.files['foto']
+                
+            if foto.filename != '':
+
+                path_placa = ("static/placas")
+                path_qr = ("static/qr")
+
+                val.crear_directorio(os, path_placa)
+                val.crear_directorio(os, path_qr)
+
+                id = str(uuid.uuid1())
+                file_ext = os.path.splitext(foto.filename)[1]
+                url_foto = id+file_ext
+                foto.save(os.path.join(path_placa, url_foto))
+
+                qr = qrcode.QRCode(version=1,box_size=10,border=5)
+                qr.add_data("ID: "+id+"\n Fecha de Ingreso: ")
+                qr.make(fit=True)
+
+                img = qr.make_image(fill="black",back_color="white")
+                img.save(os.path.join(path_qr, id+".png"))
+
+            else:
+                return jsonify({"message": "Imagen no encontrada"}), 404
+        else:
+            return jsonify({"message": "Petición Incorrecta"}), 500
+
+    except Exception as e:
+            hist.guardar_historial(
+                "ERROR", "INGRESO", 'ERROR AL GENERAR CÓDIGO QR - "'+str(e)+'"')
+            return redirect(url_for('err_500'))

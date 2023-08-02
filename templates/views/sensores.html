@@ -1,0 +1,96 @@
+<div class="tab-pane fade" id="v-pills-sensores" role="tabpanel" aria-labelledby="v-pills-sensores-tab">
+
+
+    <div class="row">
+
+        <div class="col">
+
+            <button type="button" class="btn btn-success btn-block" data-bs-toggle="modal"
+                data-bs-target="#sensorModal">
+                <i class="fas fa-wifi"></i> Agregar Sensor
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="row mt-3">
+
+        <div class="col">
+
+           
+            {% include '/views/tables/table_sensores.html' %}
+
+
+        </div>
+
+    </div>
+
+
+     <!-- Modal -->
+     <div class="modal fade" id="sensorModal" tabindex="-1" aria-labelledby="sensorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="sensorModalLabel"><b>Agregar sensor</b></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post" id="form_sensor">
+                    <div class="modal-body">
+
+                        <div class="modal-body row g-3">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <label class="form-label fs-5"><b>* Piso:</b></label>
+                                <select class="form-select fs-5 border border-dark" id="s_cmb_piso" name="s_piso" required>
+                                    <option disabled selected value="">Selecciona</option>
+                                </select>
+                                
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <label class="form-label fs-5"><b>* Seccion:</b></label>
+                                <select class="form-select fs-5 border border-dark" id="s_cmb_seccion" name="s_seccion" required>
+                                    <option disabled selected value="">Selecciona</option>
+                                </select>
+                                
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <label class="form-label fs-5"><b>* Plaza:</b></label>
+                                <select class="form-select fs-5 border border-dark" id="s_cmb_plaza" name="s_plaza" required>
+                                    <option disabled selected value="">Selecciona</option>
+                                </select>
+                                
+                            </div>
+                            
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <label class="form-label fs-5"><b>* Nombre:</b></label>
+                                <input type="text" class="form-control fs-5 border border-dark" id="s_nombre"
+                                    name="s_nombre" placeholder="Ejem. Nombre del sensor" value="" required>
+                            </div>
+
+
+                            <input type="text" class="form-control fs-5 border border-dark" id="s_codigo"
+                            name="s_codigo" value="" style="display: none;" >
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <span id="mensaje_sensor"></span>
+
+                        <button type="submit" class="btn btn-success" id="save-sensor"><i class="fas fa-save"></i> Guardar</button>
+
+                        <button type="submit" class="btn btn-primary" id="edit-sensor"><i class="fas fa-save"></i> Editar</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/sensores.js"></script>
+
+</div>

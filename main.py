@@ -3,7 +3,10 @@ from dotenv import load_dotenv
 import controllers.ctl_servidor as serv
 import controllers.index as ini
 import controllers.ctl_history as hist
+import controllers.ctl_piso as piso
 import controllers.ctl_usuario as user
+import controllers.ctl_padron as ctl_padron
+import controllers.ctl_sensor as sensor
 import os 
 
 load_dotenv()
@@ -11,6 +14,7 @@ load_dotenv()
 app = Flask(__name__, static_folder='static', static_url_path='')
 app.secret_key = os.getenv("KEY")
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 
 # -----RUTAS---------------------------------------------
 
@@ -28,6 +32,56 @@ def index():
 @app.route('/principal', methods=['GET'])
 def principal():
     return ini.principal()
+
+# ---PADRON---
+
+
+@app.route('/padron/buscar', methods=['POST'])
+def padron_buscar():
+    return ctl_padron.buscar(request)
+
+
+# ----- PISOS -----
+
+@app.route('/principal/save_pisos', methods=['POST'])
+def save_pisos():
+    return piso.save_pisos(request)
+
+
+@app.route('/principal/ver_pisos', methods=['POST'])
+def ver_pisos():
+    return piso.ver_pisos(request)
+
+
+@app.route('/principal/edit_piso', methods=['POST'])
+def edit_pisos():
+    return piso.edit_pisos(request)
+
+
+@app.route('/principal/del_pisos', methods=['POST'])
+def del_pisos():
+    return piso.del_pisos(request)
+
+# ----- SENSORES -----
+
+@app.route('/principal/save_sensores', methods=['POST'])
+def save_sensores():
+    return sensor.save_sensores(request)
+
+
+@app.route('/principal/ver_sensores', methods=['POST'])
+def ver_sensores():
+    return sensor.ver_sensores(request)
+
+
+@app.route('/principal/edit_sensor', methods=['POST'])
+def edit_sensores():
+    return sensor.edit_sensores(request)
+
+
+@app.route('/principal/del_sensores', methods=['POST'])
+def del_sensores():
+    return sensor.del_sensores(request)
 
 
 # ---- SERVIDORES ---
