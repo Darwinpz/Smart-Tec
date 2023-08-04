@@ -5,11 +5,6 @@
 
         <div class="col">
 
-            <button type="button" class="btn btn-success btn-block" data-bs-toggle="modal"
-                data-bs-target="#cobranzaModal">
-                <i class="fas fa-user-plus"></i> Agregar Cobranza
-            </button>
-
             {% if ("Administrador" in session.rol or "Super-Admin" in session.rol)  %}
             <a type="button" class="btn btn-primary btn-block" href="/rpt/cobranzas" target="_blank" ><i class="fas fa-print"></i> Reporte de cobranzas</a></a>
             {% endif %}
@@ -22,7 +17,7 @@
 
         <div class="col">
 
-           
+            {% include '/views/tables/table_cobranzas.html' %}
 
         </div>
 

@@ -7,6 +7,8 @@ import controllers.ctl_piso as piso
 import controllers.ctl_usuario as user
 import controllers.ctl_padron as ctl_padron
 import controllers.ctl_sensor as sensor
+import controllers.ctl_clientes as cli
+import controllers.ctl_cobranzas as co
 import os 
 
 load_dotenv()
@@ -105,7 +107,42 @@ def edit_servidor():
 def del_servidores():
     return serv.del_servidores(request)
 
+# ---- CLIENTES ---
 
+@app.route('/principal/save_clientes', methods=['POST'])
+def save_clientes():
+    return cli.save_clientes(request)
+
+
+@app.route('/principal/ver_clientes', methods=['POST'])
+def ver_clientes():
+    return cli.ver_clientes(request)
+
+
+@app.route('/principal/edit_cliente', methods=['POST'])
+def edit_cliente():
+    return cli.edit_clientes(request)
+
+
+@app.route('/principal/del_clientes', methods=['POST'])
+def del_clientes():
+    return cli.del_clientes(request)
+
+
+# ---- COBRANZA ---
+
+@app.route('/principal/save_cobranzas', methods=['POST'])
+def save_cobranzas():
+    return co.save_cobranzas(request)
+
+
+@app.route('/principal/ver_cobranzas', methods=['POST'])
+def ver_cobranzas():
+    return co.ver_cobranzas(request)
+
+@app.route('/principal/edit_cobranza', methods=['POST'])
+def edit_cobranza():
+    return co.edit_cobranzas(request)
 
 # ----- USUARIOS ---------
 

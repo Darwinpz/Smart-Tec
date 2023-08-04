@@ -1,0 +1,113 @@
+<div class="tab-pane fade" id="v-pills-clientes" role="tabpanel" aria-labelledby="v-pills-clientes-tab">
+
+
+    <div class="row">
+
+        <div class="col">
+
+            <button type="button" class="btn btn-success btn-block" data-bs-toggle="modal"
+                data-bs-target="#clienteModal">
+                <i class="fas fa-user-plus"></i> Agregar Cliente
+            </button>
+
+            <a type="button" class="btn btn-primary btn-block" href="/rpt/clientes" target="_blank" ><i class="fas fa-print"></i> Reporte de clientes</a></a>
+
+        </div>
+
+    </div>
+
+    <div class="row mt-3">
+
+        <div class="col">
+
+            {% include '/views/tables/table_clientes.html' %}
+
+        </div>
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="clienteModal" tabindex="-1" aria-labelledby="clienteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="clienteModalLabel"><b>Agregar cliente</b></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form action="post" id="form_cliente">
+                    <div class="modal-body">
+
+                        <div class="modal-body row g-3">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12" id="s_div_buscar">
+                                <label class="form-label fs-5"><b>* Buscador: <span
+                                            id="cli_mensaje_buscador"></span></b></label>
+                                <input type="text" class="form-control fs-5 border border-dark" id="cli_buscar"
+                                    name="cli_buscar" placeholder="Cedula" maxlength="10" value="">
+                            </div>
+
+                            <div class="col-lg-3 col-md-12 col-sm-12" style="display: none;">
+                                <label class="form-label fs-5"><b>* Cédula:</b></label>
+                                <input type="text" class="form-control fs-5 border border-dark" id="cli_cedula"
+                                    name="cli_cedula" placeholder="Cédula" readonly required>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <label class="form-label fs-5"><b>* Cliente:</b></label>
+                                <input type="text" class="form-control fs-5 border border-dark" id="cli_ciudadano"
+                                    name="cli_ciudadano" placeholder="Nombre del Cliente" readonly required>
+                            </div>
+
+                            <div class="col-lg-8 col-md-12 col-sm-12">
+                                <label class="form-label fs-5"><b>* Correo:</b></label>
+                                <input type="email" class="form-control fs-5 border border-dark" id="cli_correo"
+                                    name="cli_correo" placeholder="Correo Electrónico" required>
+                            </div>
+
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <label class="form-label fs-5"><b>* Placa:</b></label>
+                                <input type="text" class="form-control fs-5 border border-dark" id="cli_placa"
+                                    name="cli_placa" placeholder="Placa Vehicular" required>
+                            </div>
+                            
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <label class="form-label fs-5"><b>* Clave:</b></label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control fs-5" id="cli_clave" name="cli_clave" value=""
+                                        placeholder="Clave de Acceso" required>
+                                    <span class="input-group-text btn_ver_clave" style="cursor: pointer;"><i
+                                            class="fa fa-eye-slash"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <label class="form-label fs-5"><b>* Repetir Clave:</b></label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control fs-5" id="cli_rep_clave" name="cli_rep_clave" value=""
+                                        placeholder="Confirmar Clave" required>
+                                    <span class="input-group-text btn_ver_clave" style="cursor: pointer;"><i
+                                            class="fa fa-eye-slash"></i></span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <span id="mensaje_cliente"></span>
+                        
+                        <button type="submit" class="btn btn-success" id="save-cliente"><i class="fas fa-save"></i> Guardar</button>
+
+                        <button type="submit" class="btn btn-primary" id="edit-cliente"><i class="fas fa-save"></i> Editar</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/clientes.js"></script>
+
+</div>

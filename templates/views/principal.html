@@ -56,6 +56,8 @@
                           <button class="nav-link link-success" id="v-pills-pisos-tab" data-bs-toggle="pill" data-bs-target="#v-pills-pisos" type="button" role="tab" aria-controls="v-pills-pisos" aria-selected="false">Pisos</button>
                           <button class="nav-link link-success" id="v-pills-sensores-tab" data-bs-toggle="pill" data-bs-target="#v-pills-sensores" type="button" role="tab" aria-controls="v-pills-sensores" aria-selected="false">Sensores</button>
                           <button class="nav-link link-success" id="v-pills-cobranzas-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cobranzas" type="button" role="tab" aria-controls="v-pills-cobranzas" aria-selected="false">Cobranza</button>
+                          <button class="nav-link link-success" id="v-pills-clientes-tab" data-bs-toggle="pill" data-bs-target="#v-pills-clientes" type="button" role="tab" aria-controls="v-pills-clientes" aria-selected="false">Clientes</button>
+                          
                           {% if "Super-Admin" in session.rol %}
                           <button class="nav-link link-success" id="v-pills-histories-tab" data-bs-toggle="pill" data-bs-target="#v-pills-histories" type="button" role="tab" aria-controls="v-pills-histories" aria-selected="false">History</button>  
                           {% endif %}
@@ -98,6 +100,7 @@
                         {% include '/views/pisos.html' %}
                         {% include '/views/sensores.html' %}
                         {% include '/views/cobranzas.html' %}
+                        {% include '/views/clientes.html' %}
                         
                         {% if "Super-Admin" in session.rol  %}
                         {% include '/views/histories.html' %}

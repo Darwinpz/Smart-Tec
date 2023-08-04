@@ -2,12 +2,12 @@ from datetime import datetime
 
 class Cliente:
     
-    def __init__(self, cedula, nombres, correo, placa, url_foto):
+    def __init__(self, cedula,clave, nombres, correo, placa):
         self.cedula = cedula
+        self.clave = clave
         self.nombres = nombres
         self.correo = correo
         self.placa = placa
-        self.url_foto = url_foto
 
     def obtener_cliente(self):
         return self.__dict__
